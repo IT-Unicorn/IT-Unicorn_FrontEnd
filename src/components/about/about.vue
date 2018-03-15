@@ -4,3 +4,13 @@
       <p>这是一个充满正能量的团队</p>
   </div>
 </template>
+<script>
+  export default {
+    components:{
+    }
+  }
+</script>
+
+<style scoped >
+
+</style>
