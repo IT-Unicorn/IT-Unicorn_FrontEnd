@@ -24,5 +24,13 @@ export default new Router({
       component: register
     },
     questionPlatform, //问题平台
-  ]
+  ],
+  scrollBehavior (to, from, savedPosition) {
+    //记录路由界面位置,前进后退按钮之后,能滚动到指定位置,没有记录位置则在头部
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      return { x: 0, y: 0 }
+    }
+  }
 })

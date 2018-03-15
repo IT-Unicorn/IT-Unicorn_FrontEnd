@@ -242,3 +242,54 @@ components: {
 ```
 
 当<el-menu>中定义router属性时, <el-menu-item>中的index属性直接填写path, 可实现路由跳转
+
+
+
+## 遇到一些问题的解决方法(问题解决了,但不一定是最合理的,欢迎提供意见)
+
+### Vue-cil构建出来的工程引用CSS样式报错
+以引用Element-UI为例,在Element[官方](http://element-cn.eleme.io/#/zh-CN)推荐中,在引用的时候还需要引入
+```
+import 'element-ui/lib/theme-chalk/index.css';
+```
+但是不知道是我用的Vue版本问题,还是别的原因, 引入这个之后webpack打包的时候就会报错,在网上找一下,好像需要配置CSS-loader和style-loader,没去研究,因为我发现了另外的可行办法,将这个引用放在App.vue中的style标签中,就不在报错了.不知道这样会不会有其他问题, 待观察
+```
+<style >
+    @import "element-ui/lib/theme-chalk/index.css";
+</style>
+```
+
+### Vue前端跨域请求node后端的问题
+
+安装完Axios之后,向后端发起了一个请求,发现控制台提示错误
+```
+Failed to load http://localhost:3000/login: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin 'http://localhost:8080' is therefore not allowed access.
+```
+在网上找了一些资料, 有说用CORS的, 有说用 Proxy 代理的, 有说用Nginx的,  最后我选择了一个最简单的方法,在node的app.js中加入
+```
+app.all('*', function (req, res, next) {
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Content-Length, Authorization, Accept, X-Requested-With , yourHeaderFeild');
+  res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
+  res.header("Access-Control-Allow-Credentials", "true");
+  res.header("Access-Control-Allow-Origin", "http://localhost:8080");  //这个地方填写允许访问的地址,  * 表示任何地址
+  if (req.method == 'OPTIONS') {
+      /*让options请求快速返回*/
+      res.send(200);
+  }
+  else {
+    /*防止异步造成多次响应，出现错误*/
+    var _send = res.send;
+        var sent = false;
+        res.send = function (data) {
+            if (sent) return;
+            _send.bind(res)(data);
+            sent = true;
+        };
+      next();
+  }
+});
+```
+
+加完之后, 在发起请求就不报错了,   
+
+注意,  这个只是在开发期间能够方便前后台通信, 正式环境慎用, 应该有更好的方法, 等用到的时候我在维护上

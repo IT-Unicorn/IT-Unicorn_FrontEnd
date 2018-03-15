@@ -1,5 +1,5 @@
 <template>
- <div>
+ <div class="page">
    <h1>{{msg}}</h1>
    <h2>欢迎界面,海报</h2>
  </div>
@@ -18,5 +18,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+.page{
+  text-align: center
+}
 </style>
