@@ -219,8 +219,17 @@ components: {
    <u-header></u-header>
 </el-header>
 ```
+#### 3.2.1 Header的布局
 
-#### 3.2.1 Header中的Nav
+大体分为三部分, LOGO,NAV菜单,LOGIN登陆注册按钮
+
+在大屏幕的时候,左边LOGO,中间菜单,右边登陆注册按钮
+
+在小屏幕的时候,左边是一个图标按钮下拉菜单, 中间是LOGO, 右边是登陆注册按钮
+
+这个效果主要是用Element-UI的响应式布局实现的
+
+#### 3.2.2 Header中的Nav
 
 使用<el-menu>定义导航栏,<el-menu-item>菜单项,<el-submenu>带下拉选项的菜单
 ```
@@ -242,6 +251,18 @@ components: {
 ```
 
 当<el-menu>中定义router属性时, <el-menu-item>中的index属性直接填写path, 可实现路由跳转
+
+菜单需要定义两套, 一套是大屏幕横向显示的, 一套是按钮下拉菜单
+
+#### 3.2.3 Header中的login
+
+在Header的最右侧是登陆和注册两个按钮, 点击分别跳转到响应的页面
+
+如果已经登陆,最右侧则显示登陆名,并且有下来菜单,可以登出和查看个人信息
+
+这里要用到Vuex的全局状态,  记录是否为登陆状态
+
+在用v-if  v-else 来控制标签是否显示
 
 
 

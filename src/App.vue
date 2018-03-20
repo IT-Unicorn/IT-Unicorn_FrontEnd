@@ -29,6 +29,9 @@ export default {
 
 <style >
 @import "element-ui/lib/theme-chalk/index.css";
+@import 'element-ui/lib/theme-chalk/display.css';
+@import 'materialize-css/dist/css/materialize.min';
+@import '//at.alicdn.com/t/font_595289_fdx474nfnjlcjtt9.css';
 .u-header {
   background-color: #b3c0d1;
   color: #333;
