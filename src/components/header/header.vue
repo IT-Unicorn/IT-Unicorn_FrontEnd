@@ -11,7 +11,7 @@
         </el-col>
         <el-col :xs="10" class="hidden-sm-and-up" >
             <div class="logo">
-               IT-Unicorn
+              IT-Unicorn
             </div>
         </el-col>
         <el-col :xs="7" :sm="8">
@@ -27,7 +27,7 @@ import Login from "./login";
 export default {
   components: {
     "u-nav": Nav,
-    "u-login":Login
+    "u-login": Login
   }
 };
 </script>
@@ -37,7 +37,7 @@ export default {
   background-color: #5283c9;
   border-bottom: 1px solid #ffffff;
 }
-.logo{
+.logo {
   color: #ffffff;
   font-weight: bold;
   font-size: 24px;
