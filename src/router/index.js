@@ -4,7 +4,8 @@ import Welcome from '@/components/Welcome'
 import about from '@/components/about/about'
 import login from '@/components/header/login/login'
 import register from '@/components/header/login/register'
-import questionPlatform from '../components/questionPlatform/router/index'
+import questionPlatform from '@/components/questionPlatform/router/index'
+import blog from '@/components/blog/router/index'
 Vue.use(Router)
 
 export default new Router({
@@ -30,6 +31,7 @@ export default new Router({
       component: register
     },
     questionPlatform, //问题平台
+    blog, //博客
   ],
   scrollBehavior (to, from, savedPosition) {
     //记录路由界面位置,前进后退按钮之后,能滚动到指定位置,没有记录位置则在头部
