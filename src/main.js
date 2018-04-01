@@ -5,13 +5,11 @@ import App from './App'
 import router from './router'
 import ElementUI from 'element-ui'
 import VueQuillEditor from 'vue-quill-editor'
-import MaterializeCSS from 'materialize-css'
 import store from "@/vuex/store"
 // import '../config/rem';  //根据屏幕大小设置字体大小,比较适用于移动端, 尝试功能,试着玩的
 Vue.config.productionTip = false
 Vue.use(ElementUI);
 Vue.use(VueQuillEditor);
-Vue.use(MaterializeCSS);
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
